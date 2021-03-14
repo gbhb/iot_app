@@ -1,21 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:transparent_image/transparent_image.dart';
+import 'login/login_page.dart';
+import 'package:firebase_database/firebase_database.dart';
 
+final databaseReference = FirebaseDatabase.instance.reference();
+void createData(){
+  databaseReference.child("flutterDevsTeam1").set({
+    'name': 'Deepak Nishad',
+    'description': 'Team Lead'
+  });
+  databaseReference.child("flutterDevsTeam2").set({
+    'name': 'Yashwant Kumar',
+    'description': 'Senior Software Engineer'
+  });
+  databaseReference.child("flutterDevsTeam3").set({
+    'name': 'Akshay',
+    'description': 'Software Engineer'
+  });
+  databaseReference.child("flutterDevsTeam4").set({
+    'name': 'Aditya',
+    'description': 'Software Engineer'
+  });
+  databaseReference.child("flutterDevsTeam5").set({
+    'name': 'Shaiq',
+    'description': 'Associate Software Engineer'
+  });
+  databaseReference.child("flutterDevsTeam6").set({
+    'name': 'Mohit',
+    'description': 'Associate Software Engineer'
+  });
+  databaseReference.child("flutterDevsTeam7").set({
+    'name': 'Naveen',
+    'description': 'Associate Software Engineer'
+  });
+}
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Hello Flutter',
+      title: 'FlutTube',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false, // 去除右上方Debug標誌
+      home: MyHomePage(),
     );
   }
+
 }
 
 class MyHomePage extends StatefulWidget {
@@ -117,10 +151,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: 100,
                     child: RaisedButton(
                       onPressed: () {
-                        Scaffold.of(context).removeCurrentSnackBar();
-                        Scaffold.of(context).showSnackBar(_snackBar1);
+                        createData();
                       },
-                      child: Text('First Button'),
+                      child: Text('create data'),
                     ),
                   ),
                 ],
