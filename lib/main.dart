@@ -74,8 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
     mainAxisSize: MainAxisSize.min,
     children: [
       ButtonTheme(
-        minWidth: 200.0,
-        height: 100,
+        minWidth: 150.0,
+        height: 50,
         child: RaisedButton(
           onPressed: () {
             dbRef.child("FirebaseIOT").update({
@@ -86,8 +86,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       ButtonTheme(
-        minWidth: 200.0,
-        height: 100,
+        minWidth: 150.0,
+        height: 50,
         child: RaisedButton(
           onPressed: () {
             dbRef.child("FirebaseIOT").update({
@@ -104,31 +104,31 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Scaffold example"),
+        title: Text("IAQ inspection app"),
         leading: Icon(FontAwesomeIcons.database),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.star, size: 20.0),
-            title: Text('Star'),
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.mood_bad, size: 20.0), title: Text('Sad')),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.wb_sunny, size: 20.0), title: Text('Sunny')),
-        ],
-        onTap: _onItemTap,
-        currentIndex: _selectedIndex,
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   items: [
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.star, size: 20.0),
+      //       title: Text('Star'),
+      //     ),
+      //     BottomNavigationBarItem(
+      //         icon: Icon(Icons.mood_bad, size: 20.0), title: Text('Sad')),
+      //     BottomNavigationBarItem(
+      //         icon: Icon(Icons.wb_sunny, size: 20.0), title: Text('Sunny')),
+      //   ],
+      //   onTap: _onItemTap,
+      //   currentIndex: _selectedIndex,
+      // ),
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
             UserAccountsDrawerHeader(
-              accountName: Text('oil'),
-              accountEmail: Text('userGmail@gmail.com'),
+              accountName: Text('co2'),
+              accountEmail: Text('co2@gmail.com'),
               currentAccountPicture: Image.network(
-                  'https://img.mttmp.com/images/2018/05/20/19/5741_12yBwE_d7k9lnm.jpg!r800x0.jpg'),
+                  'https://cdn.vox-cdn.com/thumbor/IM3cz1t4VvE13qIHX74frYuGN6M=/0x0:5000x3932/1400x1050/filters:focal(2100x1566:2900x2366):no_upscale()/cdn.vox-cdn.com/uploads/chorus_image/image/65169437/co2.0.jpg'),
               decoration: BoxDecoration(color: Colors.blueAccent),
             ),
             ListTile(
@@ -177,8 +177,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           // ),
                           Flexible(
                             child: FadeInImage.assetNetwork(
-                                placeholder:'assets/1.jpg',
-                                image:'https://truth.bahamut.com.tw/s01/202101/5686a83fc52f34a606e2d5df43fe58f8.JPG'),
+                                placeholder:'assets/2.jpg',
+                                image:'assets/1.jpg'),
                           ),
                           Text(
                             'temperature:'+lists[0]["temperature"].toString(),
@@ -197,6 +197,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               fontFamily: 'Roboto',
                               letterSpacing: 0.5,
                               fontSize: 20,
+                              
                             ),
                           ),Text(
                             'humidity:'+lists[0]["humidity"].toString(),
@@ -207,8 +208,18 @@ class _MyHomePageState extends State<MyHomePage> {
                               letterSpacing: 0.5,
                               fontSize: 20,
                             ),
+                          ),Text(
+                            'CO2_ppm:'+lists[0]["CO2_ppm"].toString(),
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w800,
+                              fontFamily: 'Roboto',
+                              letterSpacing: 0.5,
+                              fontSize: 20,
+                            ),
                           ),
-                          Button,
+                          Flexible(child: Button,)
+
                         ],
                       ),
                     );
